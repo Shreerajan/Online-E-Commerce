@@ -7,10 +7,7 @@ It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for d
 
 ## Demo Video
 
-<video width="600" controls>
-  <source src="demo/Online_Ecommerce_demo_video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Product Demo ](demo/Online_Ecommerce_demo_video.gif)
 
 ## Installation
 
