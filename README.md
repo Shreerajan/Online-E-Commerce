@@ -36,6 +36,96 @@ It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for d
 4. Open in browser:  
    `http://localhost:8080/OnlineEcommerceApp/`
 5. Access login, register, dashboard, and product pages as needed.
+
+---
+
+# 🏗 System Architecture  
+![System Architecture](images/architecture_diagram.png)
+
+---
+
+# 🗄 ER Diagram  
+![ER Diagram](images/er_diagram.png)
+
+---
+
+# 🏛 Class Diagram  
+![Class Diagram](images/class_diagram.png)
+
+---
+
+# 📊 Use-Case Diagram  
+![Use Case Diagram](images/usecase_diagram.png)
+
+---
+
+# 🔌 JDBC Workflow
+![JDBC Workflow Diagram](images/jdbc_workflow.png)
+---
+
+# 📁 Project Folder Structure
+
+```
+OnlineEcommerceApp/
+│
+├── README.md
+├── .gitignore
+├── pom.xml (if using Maven)
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/ecommerce/
+│   │   │       ├── controller/
+│   │   │       ├── dao/
+│   │   │       ├── model/
+│   │   │       └── util/
+│   │   └── webapp/
+│   │       ├── index.jsp
+│   │       ├── login.jsp
+│   │       ├── register.jsp
+│   │       ├── products.jsp
+│   │       ├── dashboard.jsp
+│   │       ├── cart.jsp
+│   │       ├── header.jsp
+│   │       └── WEB-INF/
+│   │           ├── web.xml
+│   │           └── lib/
+│   └── test/
+│
+└── images/
+```
+
+---
+
+# 🔄 Sequence
+
+## 🔑 Login Sequence
+
+    actor User
+    User ->> LoginServlet: Submit Login Form
+    LoginServlet ->> UserDAO: validateUser()
+    UserDAO ->> DBConnection: getConnection()
+    DBConnection -->> UserDAO: Connection
+    UserDAO ->> Database: SELECT * FROM users
+    Database -->> UserDAO: User Data
+    UserDAO -->> LoginServlet: User Object
+    LoginServlet ->> Session: set user
+    LoginServlet -->> User: Redirect Dashboard
+
+## 📝 Registration Sequence
+
+    actor User
+    User ->> RegisterServlet: Submit Registration Form
+    RegisterServlet ->> UserDAO: registerUser()
+    UserDAO ->> DBConnection: getConnection()
+    DBConnection -->> UserDAO: Connection
+    UserDAO ->> Database: INSERT user data
+    Database -->> UserDAO: Success
+    UserDAO -->> RegisterServlet: OK
+    RegisterServlet -->> User: Redirect Login Page
+
+
 =======
 # 📦 Online E-Commerce Platform – SmartBuys
 
