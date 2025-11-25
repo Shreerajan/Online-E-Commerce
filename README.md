@@ -6,7 +6,11 @@ The project demonstrates important concepts like user registration, login, sessi
 It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for data management—making it ideal for beginners who want to understand Java web application development without frameworks.
 
 ## Demo Video
-![Product Demo ](demo/Online_Ecommerce_demo_video.mp4)
+
+<video width="600" controls>
+  <source src="demo/Online_Ecommerce_demo_video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Installation
 
