@@ -5,6 +5,9 @@ The Online Ecommerce Application is a functional web-based shopping platform bui
 The project demonstrates important concepts like user registration, login, session management, product listing, and database connectivity. 
 It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for data management—making it ideal for beginners who want to understand Java web application development without frameworks.
 
+## Demo Video
+![Product Demo ](demo/Online_Ecommerce_demo_video.mp4)
+
 ## Installation
 
 ### Software Requirements
@@ -21,11 +24,37 @@ It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for d
    `src/main/webapp/WEB-INF/lib/`
 4. Create MySQL database:
    ```sql
-   CREATE DATABASE ecommerce;
+   CREATE DATABASE online_ecommerce;
    ```
 5. Create required tables (`users`, `products`).
-6. Update your DBConnection.java with MySQL username & password.
-7. Verify servlet mappings inside:  
+
+   ```sql
+   CREATE TABLE users(
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   name VARCHAR(100),
+   email VARCHAR(100) UNIQUE,
+   password VARCHAR(255),
+   role VARCHAR(20) DEFAULT 'USER'
+   );
+
+   CREATE TABLE products(
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   name VARCHAR(100),
+   price DOUBLE,
+   description TEXT
+   );
+   ```
+
+6. Insert dummy products into product table.
+
+   ```sql
+   INSERT INTO products(name, price, description) VALUES
+   ('Laptop', 55000, 'Basic student laptop'),
+   ('Headphones', 1500, 'Wireless headphones'),
+   ('Keyboard', 800, 'Mechanical keyboard');
+   ````
+7. Update your DBConnection.java with MySQL username & password.
+8. Verify servlet mappings inside:  
    `src/main/webapp/WEB-INF/web.xml`
 
 ## Execution Steps
@@ -135,7 +164,7 @@ This platform provides a complete workflow including product listing, online sho
 
 Presentation - Online E-Commerc…
 
-# 🚀 Features
+# 🚀 Current Features
 # 👤 Admin Panel
 
 Manage users, products, and orders centrally
@@ -147,26 +176,16 @@ Monitor platform activity efficiently
 
 Presentation - Online E-Commerc…
 
-# 🛍️ Seller Dashboard
+# 🛍️ Seller Product Dashboard
 
-Create and manage product listings
+Product listings With price
 
-Update inventory and process orders
+Add to cart button
 
-Gain insights into sales performance
-
-Intuitive interface improves efficiency and productivity
-
-
-Presentation - Online E-Commerc…
 
 # 🛒 Buyer Experience
 
 Browse a wide range of products
-
-Purchase items quickly and securely
-
-Track order status in real time
 
 User-friendly interface for smooth navigation
 
@@ -198,13 +217,11 @@ Presentation - Online E-Commerc…
 # 👥 User Types
 User Type	Role
 Admin	Platform management and oversight
-Seller	Product management and order handling
+Seller Product management and handling
 Buyer	Product browsing and purchasing
 
 All users work together to create a smooth and efficient digital shopping system.
 
-
-Presentation - Online E-Commerc…
 
 # 🧠 Team – The Hivers
 
@@ -215,11 +232,10 @@ Suhana Kumari
 Aashish Kishor
 
 # 📌 Future Enhancements
+Create Product 
+
+Make Ordes
+
+Orders listing Page
 
 Payment gateway integration
-
-Recommendation engine
-
-AI-based search filtering
-
-Mobile app support
