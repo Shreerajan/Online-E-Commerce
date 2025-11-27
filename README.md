@@ -30,6 +30,7 @@ It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for d
 5. Create required tables (`users`, `products`).
 
    ```sql
+   -- User table
    CREATE TABLE users(
    id INT PRIMARY KEY AUTO_INCREMENT,
    name VARCHAR(100),
@@ -37,12 +38,33 @@ It follows an MVC-like approach—JSP for UI, Servlets for logic, and JDBC for d
    password VARCHAR(255),
    role VARCHAR(20) DEFAULT 'USER'
    );
-
+   -- Product table
    CREATE TABLE products(
    id INT PRIMARY KEY AUTO_INCREMENT,
    name VARCHAR(100),
    price DOUBLE,
    description TEXT
+   );
+
+   -- Orders main table
+   CREATE TABLE orders (
+   id          INT PRIMARY KEY AUTO_INCREMENT,
+   user_id     INT NOT NULL,
+   total_amount DOUBLE NOT NULL,
+   status      VARCHAR(20) NOT NULL,
+   created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   FOREIGN KEY (user_id) REFERENCES users(id)
+   );
+
+   -- Order items
+   CREATE TABLE order_items (
+   id         INT PRIMARY KEY AUTO_INCREMENT,
+   order_id   INT NOT NULL,
+   product_id INT NOT NULL,
+   quantity   INT NOT NULL,
+   price      DOUBLE NOT NULL,
+   FOREIGN KEY (order_id) REFERENCES orders(id),
+   FOREIGN KEY (product_id) REFERENCES products(id)
    );
    ```
 
@@ -168,30 +190,32 @@ Presentation - Online E-Commerc…
 # 🚀 Current Features
 # 👤 Admin Panel
 
-Manage users, products, and orders centrally
+Manage products, and orders centrally
 
 Maintain smooth marketplace operations
 
 Monitor platform activity efficiently
 
 
-Presentation - Online E-Commerc…
-
-# 🛍️ Seller Product Dashboard
+# 🛍️ Product Dashboard
 
 Product listings With price
 
 Add to cart button
+
+Cart page and place order
+
+Order listing page with pending/approved order status
 
 
 # 🛒 Buyer Experience
 
 Browse a wide range of products
 
+Add a product from dashboard
+
 User-friendly interface for smooth navigation
 
-
-Presentation - Online E-Commerc…
 
 # 📊 Why E-Commerce?
 
@@ -233,10 +257,7 @@ Suhana Kumari
 Aashish Kishor
 
 # 📌 Future Enhancements
-Create Product 
-
-Make Ordes
-
-Orders listing Page
 
 Payment gateway integration
+
+AI Powered Product recommend
